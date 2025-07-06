@@ -1,5 +1,5 @@
 const supabaseUrl='https://tpfvyfxfafhfoghvwrlj.supabase.co';
-const supabaseKey='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwZnZ5ZnhmYWZoZm9naHZ3cmxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzNTAwODAsImV4cCI6MjA2NjkyNjA4MH0.12EQQf00QKigT3ks6VTSS94w1otfLhJHGk82zzNEnxk';
+const supabaseKey='use your own supabase api key';
 
 const supabase= window.supabase.createClient(supabaseUrl,supabaseKey);
 Document.addEventListener('DomContentLoaded',async()=>{
