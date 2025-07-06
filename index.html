@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webRTC Video Call</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="setup-screen">
+            <h1>Video Call App</h1>
+            <button id="startCall">Start New Meeting</button>
+            <div class="join-form">
+                <input type="text" id="roomID" placeholder="Enter Meeting ID"/>
+                <button id ="joinCall">Join Meeting</button>
+            </div>
+            <div id ="generatedId" class="meeting-id-display hidden">
+                <span id="roomNumber"></span>
+                <button id="copyBtn" onclick="copyRoomId()">Copy ID</button>
+            </div>
+        </div>
+        <div class="call-screen hidden">
+            <div class="room-info">
+                <div class ="meeting-id-display">
+                    Meeting ID: <span id="activeRoomNumber"></span>
+                <button id="cpoyActiveBtn" onclick="copyRoomId()">copy ID</button>
+                </div>
+            </div>
+
+            <div id="joinRequests" class="join-requests-container"></div>
+            <div class ="video-container">
+                <video id="localVideo" autoplay muted></video>
+                <video id="remoteVideo">autoplay</video>
+            </div>
+    
+            <div class="controls">
+                <button id="muteAudio">Mute Audio</button>
+                <button id="muteVideo">Mute Video</button>
+                <button id="endCall" onclick="Window.location.reload()">End call</button>
+                <button id="logoutBtn" onclick="logout()"></button>
+        </div>
+    </div>
+    <div id="userInfo" class="user-Info-container">
+        <span id="username"></span>
+    </div>
+    </div>
+    <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase-js@2.38.4/dist/umd/supabase.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js" defer></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",async()=>{
+            const supabase=window.supabase.createClient(
+                'https://tpfvyfxfafhfoghvwrlj.supabase.co',
+                'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRwZnZ5ZnhmYWZoZm9naHZ3cmxqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTEzNTAwODAsImV4cCI6MjA2NjkyNjA4MH0.12EQQf00QKigT3ks6VTSS94w1otfLhJHGk82zzNEnxk'
+
+            );
+            const {data:{user}}=await supabase.auth.getUser();
+            if (user){
+                const usernameElement=document.getElementById('username');
+                if(usernameElement){
+                    const username=user.user_metadata?.username||user.email;
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

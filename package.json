@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "react-chat-engine": "^1.11.28",
+    "socket.io": "^4.8.1"
+  }
+}
